@@ -2,15 +2,15 @@ package com.bilgeAdam.Week9.TaksiDurak;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
-public class Durak implements Runnable {
-    private final Queue<Taksi> taksiler;
+public class Station implements Runnable {
+    private final Queue<Taxi> taxis;
     private Queue<Customer> customers;
 
-    public Durak(int taxiCount) {
-        this.taksiler = new ArrayDeque<>();
+    public Station(int taxiCount) {
+        this.taxis = new ArrayDeque<>();
         this.customers = new ArrayDeque<>();
         for (int i = 0; i < taxiCount; i++) {
-            taksiler.add(new Taksi());
+            taxis.add(new Taxi());
         }
     }
 
@@ -18,8 +18,8 @@ public class Durak implements Runnable {
         customers.add(customer);
     }
 
-    public Queue<Taksi> getTaksiler() {
-        return taksiler;
+    public Queue<Taxi> getTaxis() {
+        return taxis;
     }
 
     public Queue<Customer> getCustomers() {
@@ -29,16 +29,16 @@ public class Durak implements Runnable {
     @Override
     public void run() {
         while (!customers.isEmpty()) {
-            Taksi taksi = taksiler.poll();
+            Taxi taxi = taxis.poll();
             Customer customer = customers.poll();
-            taksi.tookCustomer(customer);
-            System.out.println(taksi.getNumber() + ". taxi took customer no." + customer.getNumber() + " -> total customers served: " + taksi.getCutomerCount());
+            taxi.tookCustomer(customer);
+            System.out.println(taxi.getNumber() + ". taxi took customer no." + customer.getNumber() + " -> total customers served: " + taxi.getCutomerCount());
             try {
-                Thread.sleep(customer.getDistance()/taksi.getSpeed());
+                Thread.sleep(customer.getDistance()/taxi.getSpeed());
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            taksiler.add(taksi);
+            taxis.add(taxi);
         }
 //        System.out.println("-".repeat(45));
 //        for (Taksi taksi: taksiler) {

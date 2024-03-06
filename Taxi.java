@@ -2,7 +2,7 @@ package com.bilgeAdam.Week9.TaksiDurak;
 
 import java.util.Random;
 
-public class Taksi {
+public class Taxi {
     Random random = new Random();
     private static int no;
     private final int number;
@@ -10,9 +10,9 @@ public class Taksi {
     private Customer customer;
     private int speed;
 
-    public Taksi() {
+    public Taxi() {
         no++;
-        number = no;
+        this.number = no;
         this.speed = random.nextInt(100, 5000);
     }
 
@@ -35,7 +35,7 @@ public class Taksi {
 
     @Override
     public String toString() {
-        return "Taksi{" +
+        return "Taxi{" +
                 "number=" + number +
                 ", speed=" + speed +
                 '}';

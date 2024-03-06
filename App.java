@@ -5,16 +5,16 @@ public class App {
 
     public static void main(String[] args) {
 
-        Durak durak = new Durak(10);
+        Station station = new Station(10);
 
         //Customers lined up in Durak
         for (int i = 0; i < 100; i++) {
-            durak.newCustomer(new Customer());
+            station.newCustomer(new Customer());
         }
 
-        Thread thread = new Thread(durak);
-        Thread thread1 = new Thread(durak);
-        Thread thread2 = new Thread(durak);
+        Thread thread = new Thread(station);
+        Thread thread1 = new Thread(station);
+        Thread thread2 = new Thread(station);
 
         thread.start();
         thread1.start();
@@ -29,12 +29,12 @@ public class App {
         }
 
         System.out.println("--------Total Customers Served--------");
-        for (Taksi taksi: durak.getTaksiler()) {
-            System.out.println("Taxi #" + taksi.getNumber() +": " + taksi.getCutomerCount());
+        for (Taxi taxi : station.getTaxis()) {
+            System.out.println("Taxi #" + taxi.getNumber() +": " + taxi.getCutomerCount());
         }
 
-//        durak.getTaksiler().forEach(System.out::println);
-//        durak.getCustomers().forEach(System.out::println);
+        station.getTaxis().forEach(System.out::println);
+        station.getCustomers().forEach(System.out::println);
 
 
     }
