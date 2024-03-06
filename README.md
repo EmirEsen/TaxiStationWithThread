@@ -1,1 +1,3 @@
-Taxi station game a like program to practice Threads and Queue in Java.
+### Game a-like simulation to practice Threads and Queue in Java.
+ 
+#####  The taxi station operates with a predetermined number of taxis on duty, each with randomly generated speeds. Customers queue up at the station and are served on a first-in, first-out (FIFO) basis. Each customer is assigned a randomly generated trip distance, and the trip time is determined by dividing the customer's trip distance by the speed of the assigned taxi. After completing a trip, each taxi returns to the station and enters the queue again in a FIFO manner.
